@@ -1,14 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useAuth } from "@/hooks/useAuth";
+import { LoginForm } from "@/components/auth/LoginForm";
+import { StudentDashboard } from "@/components/dashboard/StudentDashboard";
 
 const Index = () => {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+  const { user, token, login, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <div className="text-center space-y-4">
+          <img 
+            src="/lovable-uploads/fb66a808-aa68-4202-8df5-5f08e7507bd1.png" 
+            alt="FTA Logo" 
+            className="h-16 w-16 mx-auto animate-pulse"
+          />
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  if (!token || !user) {
+    return <LoginForm onLogin={login} />;
+  }
+
+  return <StudentDashboard />;
 };
 
 export default Index;
