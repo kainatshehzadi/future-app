@@ -53,9 +53,9 @@ export const LoginForm = ({ onLogin }: LoginFormProps) => {
           />
           <div>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              FTA School Management
+              Futuristic Tech Academy
             </h1>
-            <p className="text-muted-foreground">Sign in to your account</p>
+            <p className="text-muted-foreground">Welcome to FTA Student Portal</p>
           </div>
         </div>
 
